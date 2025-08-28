@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cobol-app-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cobol-app
+  template:
+    metadata:
+      labels:
+        app: cobol-app
+    spec:
+      containers:
+      - name: cobol-app-container
+        image: theokaitou/cobol-app
+        ports:
+        - containerPort: 8000
