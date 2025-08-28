@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: cobol-app-ingress
+spec:
+  rules:
+  - host: "cobolapp.com" # <-- Hostname/domain yang akan kita gunakan untuk mengakses
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: cobol-app-service # <-- Nama Service yang sudah Anda buat sebelumnya
+            port:
+              number: 80 # <-- Port dari Service Anda (bukan NodePort atau TargetPort)
